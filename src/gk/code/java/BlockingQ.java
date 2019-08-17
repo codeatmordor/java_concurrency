@@ -35,7 +35,11 @@ import java.util.List;
  */
 public class BlockingQ<E> {
     private final List q = new LinkedList<E>();
-    private final int limit = 10;
+    private int limit = 10;
+
+    public BlockingQ(final int limit) {
+        this.limit = limit;
+    }
 
     public synchronized void enqueue(final Object e) throws InterruptedException {
         if (q.size() == limit) {
